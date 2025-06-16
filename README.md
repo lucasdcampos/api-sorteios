@@ -40,6 +40,7 @@ pip install -r requirements.txt
 Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
 
 ```
+API_KEY=chave-da-api
 SUPABASE_URL=https://url-do-projeto.supabase.co
 SUPABASE_KEY=chave-do-supabase
 ```

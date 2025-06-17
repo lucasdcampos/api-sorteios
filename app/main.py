@@ -8,7 +8,7 @@ app = FastAPI()
 
 @app.get("/")
 def root():
-    return {"Hello, World!"}
+    return {"AppSorteios": "API funcionando!"}
 
 @app.post("/sortear")
 def sortear(request: SorteioRequest, x_api_key: str = Header(None)):

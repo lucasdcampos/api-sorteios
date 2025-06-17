@@ -32,6 +32,14 @@ def realizar_sorteio(request: SorteioRequest):
     print("Nenhum sorteio realizado (sem vagas ou unidades compatíveis).")
     return {"message": "Nenhuma vaga/unidade disponível para sorteio."}
 
+def apagar_sorteios():
+    """
+    Apaga todos os sorteios registrados no banco de dados.
+    """
+    db.delete_sorteios()
+    db.delete_resultado_sorteios()
+
+    return "Os sorteios foram obliterados da existência."
 
 def sortear_vagas_para_unidades(vagas, unidades):
     """

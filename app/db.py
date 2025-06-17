@@ -90,3 +90,22 @@ class SupabaseDB:
         except Exception as e:
             print(f"Erro ao salvar o sorteio no banco de dados: {e}")
             return None
+    
+    # Usando .neq("sort_id", 0) porque o supabase não permite deletar tudo sem condição, imbecilidade extrema
+    def delete_resultado_sorteios(self):
+        """
+        Deleta todos os registros da tabela 'resultado_sorteios'.
+        """
+        try:
+            self.client.table("resultado_sorteios").delete().neq("result_id", 0).execute()
+        except Exception as e:
+            print(f"Erro ao deletar resultados dos sorteios: {e}")
+
+    def delete_sorteios(self):
+        """
+        Deleta todos os registros da tabela 'sorteios'.
+        """
+        try:
+            self.client.table("sorteios").delete().neq("sort_id", 0).execute()
+        except Exception as e:
+            print(f"Erro ao deletar sorteios: {e}")

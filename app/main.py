@@ -14,6 +14,16 @@ if not API_KEY:
 def root():
     return {"AppSorteios": "API funcionando!"}
 
+@app.get("/testar-rota-publica/")
+def rota_publica():
+    return {"AppSorteios": "Você acessou uma rota pública sem autenticação!"}
+
+@app.get("/testar-rota-privada/")
+def rota_privada(x_api_key: str = Header(None)):
+    if x_api_key != API_KEY:
+        raise HTTPException(status_code=401, detail="API key inválida.")
+    return {"AppSorteios": "Você acessou uma rota privada com autenticação! Autenticação bem-sucedida."}
+
 @app.post("/sortear")
 def sortear(request: SorteioRequest, x_api_key: str = Header(None)):
     if x_api_key != API_KEY:
